@@ -24,6 +24,9 @@ class SocialMediaRecorder extends StatefulWidget {
   /// function fireing when tap on record button
   final Function()? onTapDown;
 
+  /// function fireing when tap up record button
+  final Function()? onTapUp;
+
   /// recording Icon That pressesd to start record
   final Widget? recordIcon;
 
@@ -77,6 +80,7 @@ class SocialMediaRecorder extends StatefulWidget {
     this.storeSoundRecoringPath = "",
     required this.sendRequestFunction,
     this.onTapDown,
+    this.onTapUp,
     this.onCancelFunction,
     this.recordIcon,
     this.lockButton,
@@ -190,6 +194,9 @@ class _SocialMediaRecorder extends State<SocialMediaRecorder> {
               String path = state.mPath;
               widget.sendRequestFunction(File.fromUri(Uri(path: path)));
             }
+          }
+          if (widget.onTapUp != null) {
+            widget.onTapUp!();
           }
           state.resetEdgePadding();
         }
