@@ -70,8 +70,8 @@ class SoundRecorderWhenLockedDesign extends StatelessWidget {
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 500),
                     curve: Curves.easeIn,
-                    width: 35,
-                    height: 35,
+                    width: sendButtonIcon != null ? 20 : 50,
+                    height: sendButtonIcon != null ? 20 : 50,
                     child: Container(
                       color: recordIconWhenLockBackGroundColor,
                       child: Padding(
@@ -81,7 +81,7 @@ class SoundRecorderWhenLockedDesign extends StatelessWidget {
                             Icon(
                               Icons.send,
                               textDirection: TextDirection.ltr,
-                              size: 20,
+                              size: 28,
                               color: (soundRecordNotifier.buttonPressed)
                                   ? Colors.grey.shade200
                                   : Colors.black,
