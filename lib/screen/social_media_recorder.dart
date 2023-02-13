@@ -18,8 +18,11 @@ class SocialMediaRecorder extends StatefulWidget {
   /// function reture the recording sound file
   final Function(File soundFile) sendRequestFunction;
 
-  /// function reture the recording sound file
+  /// function firing when press cancel button
   final Function()? onCancelFunction;
+
+  /// function fireing when tap on record button
+  final Function()? onTapDown;
 
   /// recording Icon That pressesd to start record
   final Widget? recordIcon;
@@ -73,6 +76,7 @@ class SocialMediaRecorder extends StatefulWidget {
     this.sendButtonIcon,
     this.storeSoundRecoringPath = "",
     required this.sendRequestFunction,
+    this.onTapDown,
     this.onCancelFunction,
     this.recordIcon,
     this.lockButton,
@@ -170,6 +174,9 @@ class _SocialMediaRecorder extends State<SocialMediaRecorder> {
 
     return Listener(
       onPointerDown: (details) async {
+        if (widget.onTapDown != null) {
+          widget.onTapDown!();
+        }
         state.setNewInitialDraggableHeight(details.position.dy);
         state.resetEdgePadding();
 
