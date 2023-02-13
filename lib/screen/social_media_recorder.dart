@@ -18,6 +18,9 @@ class SocialMediaRecorder extends StatefulWidget {
   /// function reture the recording sound file
   final Function(File soundFile) sendRequestFunction;
 
+  /// function reture the recording sound file
+  final Function()? onCancelFunction;
+
   /// recording Icon That pressesd to start record
   final Widget? recordIcon;
 
@@ -70,6 +73,7 @@ class SocialMediaRecorder extends StatefulWidget {
     this.sendButtonIcon,
     this.storeSoundRecoringPath = "",
     required this.sendRequestFunction,
+    this.onCancelFunction,
     this.recordIcon,
     this.lockButton,
     this.counterBackGroundColor,
@@ -151,6 +155,7 @@ class _SocialMediaRecorder extends State<SocialMediaRecorder> {
       return SoundRecorderWhenLockedDesign(
         cancelText: widget.cancelText,
         sendButtonIcon: widget.sendButtonIcon,
+        onCancelFunction: widget.onCancelFunction,
         cancelTextBackGroundColor: widget.cancelTextBackGroundColor,
         cancelTextStyle: widget.cancelTextStyle,
         counterBackGroundColor: widget.counterBackGroundColor,

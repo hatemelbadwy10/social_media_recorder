@@ -10,6 +10,7 @@ class SoundRecorderWhenLockedDesign extends StatelessWidget {
   final SoundRecordNotifier soundRecordNotifier;
   final String? cancelText;
   final Function sendRequestFunction;
+  final Function? onCancelFunction;
   final Widget? recordIconWhenLockedRecord;
   final TextStyle? cancelTextStyle;
   final TextStyle? counterTextStyle;
@@ -23,6 +24,7 @@ class SoundRecorderWhenLockedDesign extends StatelessWidget {
     required this.sendButtonIcon,
     required this.soundRecordNotifier,
     required this.cancelText,
+    required this.onCancelFunction,
     required this.sendRequestFunction,
     required this.recordIconWhenLockedRecord,
     required this.cancelTextStyle,
@@ -95,6 +97,9 @@ class SoundRecorderWhenLockedDesign extends StatelessWidget {
                   onTap: () {
                     soundRecordNotifier.isShow = false;
                     soundRecordNotifier.resetEdgePadding();
+                    if (onCancelFunction != null) {
+                      onCancelFunction!();
+                    }
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
